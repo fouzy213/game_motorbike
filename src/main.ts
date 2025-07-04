@@ -5,13 +5,13 @@ const right_limit: number = 420;
 const left_limit : number= -470;
 
 const inside_countainer = document.createElement("div");
-inside_countainer.style.width = "300px";
-inside_countainer.style.height = "300px";
+inside_countainer.style.width = "180px";
+inside_countainer.style.height = "250px";
 inside_countainer.style.backgroundImage = "url('./src/images/pilote_neutre.png')";
 inside_countainer.style.backgroundSize = "cover";
 inside_countainer.style.backgroundRepeat = "no-repeat";
 inside_countainer.style.position = "absolute";
-inside_countainer.style.bottom = "0px";
+inside_countainer.style.bottom = "5px";
 inside_countainer.style.left = "50%";
 inside_countainer.style.transform = `translateX(calc(-50% + ${offsetX}px))`;
 
@@ -22,14 +22,26 @@ if (container) {
     event.preventDefault();
 
     if (event.key === "ArrowLeft" && offsetX > left_limit) {
-      offsetX -= 10;
+      offsetX -= 10 
+      inside_countainer.style.backgroundImage = "url('./src/images/sprite_left.png')";
+;
+
+
     } else if (event.key === "ArrowRight"&& offsetX < right_limit) {
       offsetX += 10;
+      inside_countainer.style.backgroundImage = "url('./src/images/sprite_left.png')";
     }
-
+    
     inside_countainer.style.transform = `translateX(calc(-50% + ${offsetX}px))`;
+document.addEventListener("keyup", function (event) {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      inside_countainer.style.backgroundImage = "url('./src/images/pilote_neutre.png')";
+      
+    }
   });
 }
+
+)}
 
 
 //function route
