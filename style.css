@@ -1,14 +1,41 @@
-#game {
-  width: 300px;
-  height: 300px;
-  border-left: 2px solid red;
-  border-right: 2px solid red;
-  background-color: aqua;
-}
-
 body {
   margin: 0;
+  overflow: hidden;
   background-image: url(./src/images/map_route_backgroup_00.png);
   background-repeat: repeat-y;
   background-size: cover;
+}
+
+#game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#road {
+  position: relative;
+  width: 960px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.obstacle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url(./src/images/obstacle.png);
+  background-size: cover;
+  z-index: 2;
+  border: 2px solid black;
+}
+
+#moto {
+  position: absolute;
+  width: 90px;
+  height: 110px;
+  bottom: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 3;
 }
