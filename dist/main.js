@@ -40,19 +40,23 @@ startButton.addEventListener("click", () => {
     rules.style.display = "none";
     startGame();
 });
+const bikeSound = new Audio('./src/sound/motorcycle_sound.mp3');
+bikeSound.loop = true;
+bikeSound.volume = 0.5;
 //demarrage jeu//
 function startGame() {
+    bikeSound.play();
     const road = document.getElementById("road");
     if (!road)
         return;
     //config moto//
     const moto = document.createElement("div");
     moto.id = "moto";
-    moto.style.width = "100px";
+    moto.style.width = "90px";
     moto.style.height = "110px";
     moto.style.backgroundImage = "url('./src/images/pilote_neutre.png')";
     moto.style.position = "absolute";
-    moto.style.bottom = "5px";
+    moto.style.bottom = "10px";
     moto.style.backgroundSize = "cover";
     moto.style.backgroundRepeat = "no-repeat";
     road.appendChild(moto);
@@ -96,10 +100,10 @@ function startGame() {
     counterDisplay.style.zIndex = "9999";
     document.body.appendChild(counterDisplay);
     // config temps et vitess//
-    let scrollSpeed = 4;
+    let scrollSpeed = 6;
     let timenow = 0;
     let speedIndex = 0;
-    const speedSteps = [4, 8, 12, 20];
+    const speedSteps = [8, 12, 14, 20];
     let backgroundY = 0;
     function updateSpeed() {
         if (speedIndex < speedSteps.length - 1) {
@@ -165,6 +169,7 @@ function startGame() {
     }
     // colision alert fin du jeu//
     function endGame() {
+        bikeSound.pause();
         alert("Game Over !");
         window.location.reload();
     }
